@@ -1,0 +1,471 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+$main-color: #19888d;
+$star-color: #f0d91d;
+$footer-color: #5eabaf;
+$error-color: #ba7875;
+$success-color: #75ba9b;
+$register-color: #ba75b7;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-color {
+  &-text {
+    color: $main-color;
+  }
+  &-bg {
+    background-color: $main-color;
+  }
+}
+.p1 {
+  padding: 1rem;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+.navbar {
+  &-left-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+
+    a {
+      text-decoration: none;
+      color: #000;
+      .logo {
+        display: flex;
+        align-items: center;
+        padding-bottom: 0.5rem;
+        cursor: pointer;
+        &-img {
+          max-height: 80px;
+        }
+        &-name {
+          font-size: 2rem;
+          font-weight: 700;
+        }
+      }
+    }
+    .inputs {
+      display: flex;
+      width: 75%;
+      align-items: center;
+      justify-content: center;
+      .search-text {
+        &-input {
+          padding: 1rem;
+          border: 1px solid grey;
+          line-height: 1.5rem;
+          font-size: 1.1rem;
+          &:focus {
+            outline-color: $main-color;
+          }
+        }
+        &-button {
+          padding: 1rem;
+          border: none;
+          color: #f2f2f2;
+          font-size: 1.5rem;
+          cursor: pointer;
+          &:hover {
+            background: lighten($color: $main-color, $amount: 10);
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+  &-right-menu {
+    border-bottom: 1px solid #e8f3f3;
+    .menu {
+      &-list {
+        display: flex;
+
+        padding: 1rem;
+        &-item {
+          font-size: 1.5rem;
+          text-align: center;
+          list-style: none;
+          flex: 1;
+          cursor: pointer;
+          a {
+            color: #000;
+            &:hover {
+              color: $main-color;
+            }
+          }
+          &-name {
+            display: none;
+          }
+          &:hover {
+            color: $main-color;
+          }
+        }
+      }
+    }
+  }
+}
+.offer {
+  &-title {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e8f3f3;
+  }
+  &-items {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    .list {
+      &-item {
+        .item {
+          border: 1px solid #e8f3f3;
+          position: relative;
+          margin-bottom: 1rem;
+          .box {
+            display: flex;
+            .item-photo {
+              flex: 0.3;
+              padding: 1rem;
+
+              &-img {
+                max-width: 100px;
+              }
+            }
+            .item-parameters {
+              font-size: 0.85rem;
+              padding: 0.6rem;
+              flex: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+          &-details {
+            .description {
+              a {
+                text-decoration: none;
+                color: #000;
+                .name {
+                  text-align: center;
+                  font-weight: 500;
+                }
+              }
+              .rate {
+                padding: 1rem;
+                text-align: center;
+                color: #f0d91d;
+              }
+              .price {
+                text-align: center;
+                font-size: 1.5rem;
+              }
+            }
+          }
+          .buttons {
+            width: 100%;
+            .add-to-cart {
+              display: block;
+              margin: 1rem auto;
+              flex: 1;
+              padding: 1rem 1.5rem;
+              border: none;
+              cursor: pointer;
+              color: #fff;
+              font-size: 1.2rem;
+              background-color: #194e8d;
+            }
+          }
+          .wish-list {
+            position: absolute;
+            top: 2px;
+            right: 5px;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+.product {
+  position: relative;
+  padding-bottom: 3rem;
+  &-product {
+    .image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      .item-photo-img {
+        max-width: 200px;
+      }
+    }
+    .name {
+      font-weight: 500;
+      width: 80%;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    .price {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .add-to-cart {
+      display: block;
+      margin: 1rem auto;
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.2rem;
+      background-color: #194e8d;
+    }
+    .wish-list {
+      position: absolute;
+      top: 3px;
+      right: 15px;
+    }
+  }
+  .specyfication-mainheading {
+    padding: 1rem;
+    text-align: center;
+  }
+  .specyfication-heading {
+    padding: 1rem;
+    text-align: center;
+  }
+  .specyfication-list {
+    width: 80%;
+    border-bottom: 1px solid grey;
+
+    margin: 0 auto;
+    .specyfication-list-item {
+      padding: 0.1rem;
+      list-style: none;
+    }
+  }
+}
+.container {
+  max-width: 1100px;
+  margin: 3rem auto 3rem auto;
+  &-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .box-icon {
+      max-width: 100px;
+    }
+    .heading {
+      padding: 1rem;
+    }
+    &-methods {
+      .method {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 3rem;
+        .offer-button {
+          padding: 1rem 1.5rem;
+          background-color: $main-color;
+          border: none;
+          font-size: 1.5rem;
+          color: #fff;
+          cursor: pointer;
+          outline: none;
+          &:hover {
+            background-color: lighten($color: $main-color, $amount: 10);
+          }
+          &:focus {
+            border: none;
+          }
+        }
+      }
+    }
+    &-login {
+      width: 90%;
+      margin: 1rem auto;
+      border: 1px solid $main-color;
+      max-width: 500px;
+      .heading {
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .form {
+        padding: 1rem;
+        &-input {
+          font-family: FontAwesome;
+          width: 100%;
+          padding: 0.5rem;
+          margin-bottom: 1rem;
+          &-login {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: none;
+            background-color: $main-color;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: #fff;
+            &:focus {
+              outline: none;
+              background-color: lighten($color: $main-color, $amount: 10);
+            }
+          }
+          &:focus {
+            border: 2px solid $main-color;
+            outline: none;
+          }
+        }
+      }
+      .alert-box {
+        width: 90%;
+        margin: 1rem auto;
+        padding: 1rem;
+        .success {
+          padding: 1rem;
+          border: 1px solid $success-color;
+          color: $success-color;
+        }
+        .error {
+          border: 1px solid $error-color;
+          color: $error-color;
+          padding: 1rem;
+        }
+      }
+      .switch {
+        text-align: center;
+        padding: 1rem;
+        display: block;
+        a {
+          color: $register-color;
+        }
+      }
+    }
+    .wishlist {
+      list-style: none;
+      &-item {
+        .box {
+          display: flex;
+          flex-direction: row;
+          border-bottom: 1px solid grey;
+          .item-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 1rem;
+            &-img {
+              max-width: 100px;
+            }
+          }
+          .item-details {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            a {
+              text-decoration: none;
+              color: black;
+            }
+            .name {
+              text-align: center;
+              padding: 0.5rem;
+            }
+            .price {
+              padding: 0.5rem;
+            }
+            .buttons {
+              padding: 0.5rem;
+              .add-to-cart {
+                padding: 0.7rem 1.2rem;
+                background-color: $main-color;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                &:hover {
+                  background-color: lighten($color: $main-color, $amount: 10);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .contact {
+    border: 3px solid $main-color;
+    padding: 2rem 1rem;
+    font-size: 0.8rem;
+    margin: 0 auto;
+    width: 90%;
+    .phone {
+      margin: 1rem;
+    }
+    .text {
+      text-align: center;
+      padding: 1rem;
+    }
+  }
+}
+.footer {
+  background-color: $footer-color;
+  color: #fff;
+  .heading {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
+  .list {
+    display: flex;
+    padding-bottom: 2rem;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: space-between;
+
+    &-item {
+      width: 60px;
+      height: 60px;
+      list-style: none;
+      cursor: pointer;
+      border: 1px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.45rem;
+      a {
+        color: #fff;
+      }
+    }
+  }
+  .contact {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2rem;
+    .contact-question {
+      padding: 0.8rem;
+      font-size: 1.5rem;
+    }
+    .email {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i {
+        padding: 0.5rem;
+      }
+    }
+  }
+  .rights {
+    text-align: center;
+  }
+}

@@ -1,10 +1,32 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
+import Offer from "./components/layout/Offer";
+import Delivery from "./components/layout/Delivery";
+import Contact from "./components/layout/Contact";
+import Login from "./components/layout/Login";
+import Register from "./components/layout/Register";
+import Wishlist from "./components/layout/Wishlist";
+import Cart from "./components/layout/Cart";
+import Footer from "./components/layout/Footer";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-     App
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Offer} />
+          <Route exact path="/delivery" component={Delivery} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/wishlist" component={Wishlist} />
+          <Route exact path="/cart" component={Cart} />
+        </Switch>
+        <Footer></Footer>
+      </Router>
     </div>
   );
 }
