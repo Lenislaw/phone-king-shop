@@ -1,12 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { setAlert } from "../../actions/alert";
+import Alert from "./Alert";
 
-const Login = () => {
+const Login = ({ setAlert }) => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setAlert();
+  };
   return (
     <div className="container">
       <div className="container-box-login">
         <h1 className="heading main-color-text">Login</h1>
-        <form className="form">
+        <form className="form" onSubmit={onSubmit}>
           <input
             className="form-input"
             type="text"
@@ -21,9 +29,8 @@ const Login = () => {
           />
           <input type="submit" value="Login" className="form-input-login" />
         </form>
-        <div className="alert-box">
-          <div className="error">Invalid credentials</div>
-        </div>
+        <Alert />
+
         <small className="switch">
           Don't have an account? <Link to="/register">Register HERE!</Link>
         </small>
@@ -32,4 +39,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert })(Login);
