@@ -8,6 +8,7 @@ import Login from "./components/layout/Login";
 import Register from "./components/layout/Register";
 import Wishlist from "./components/layout/Wishlist";
 import Cart from "./components/layout/Cart";
+import Details from "./components/layout/Details";
 import Footer from "./components/layout/Footer";
 
 import "./App.css";
@@ -26,13 +27,14 @@ function App() {
           <Switch>
             <Route exact path="/" component={Offer} />
             <Route exact path="/delivery" component={Delivery} />
+            <Route exact path="/details/:id" component={Details} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/wishlist" component={Wishlist} />
             <Route exact path="/cart" component={Cart} />
           </Switch>
-         
+
           <Footer></Footer>
         </Router>
       </div>
