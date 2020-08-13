@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import Logo from "../../imgs/phone-king.jpg";
 
-const Navbar = () => {
+const Navbar = ({ cart }) => {
   return (
     <nav>
       <div className="navbar">
@@ -58,10 +60,17 @@ const Navbar = () => {
                   <p className="menu-list-item-name">Lista życzeń</p>
                 </Link>
               </li>
-              <li className="menu-list-item">
+              <li className="menu-list-item ">
                 <Link to="/cart">
                   <i className="fas fa-shopping-cart"></i>
                   <p className="menu-list-item-name">Koszyk</p>
+                  {cart.length > 0 ? (
+                    <span className="menu-list-item-cart-span">
+                      {cart.length}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </Link>
               </li>
             </ul>
@@ -71,5 +80,8 @@ const Navbar = () => {
     </nav>
   );
 };
+const mapStateToProps = (state) => ({
+  cart: state.cart.cart,
+});
 
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);
