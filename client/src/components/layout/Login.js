@@ -8,7 +8,7 @@ import Alert from "./Alert";
 const Login = ({ setAlert }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
-    setAlert();
+    setAlert("logujesz sie", "error");
   };
   return (
     <div className="container">

@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-const Alert = ({ alerts }) => {
-  console.log(alerts);
-  return (
-    <div className="alert-box">
-      <div className="error">Invalid credentials</div>
+const Alert = ({ alerts, id }) =>
+  alerts !== null &&
+  alerts.length > 0 &&
+  alerts.map((alert) => (
+    <div key={alert.id} className={`alert alert-${alert.alertType}`}>
+      {alert.msg}
     </div>
-  );
-};
+  ));
 
 Alert.propTypes = {
   alerts: PropTypes.array.isRequired,
