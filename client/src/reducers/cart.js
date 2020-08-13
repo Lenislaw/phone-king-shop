@@ -1,8 +1,4 @@
-import {
-  ADD_TO_CART,
-  ADD_TO_CART_TOAST,
-  CLEAR_CARD_TOAST,
-} from "../actions/types";
+import { ADD_TO_CART, CLEAR_CARD_TOAST } from "../actions/types";
 const initialState = {
   cart: [],
   cartToast: {
