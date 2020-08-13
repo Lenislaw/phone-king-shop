@@ -1,9 +1,10 @@
-import { SET_OFFER, GET_DETAILS } from "../actions/types";
+import { SET_OFFER, GET_DETAILS, SET_LOADING } from "../actions/types";
 const initialState = {
   products: [
     {
       id: "0",
       name: "Smartfon Apple iPhone 11 64 GB Dual SIM Czarny (MWLT2PM/A)",
+      shortName: "Apple iPhone 11",
       price: 3500,
       producent: "Apple",
       producentCode: "MWLXALPA/21",
@@ -40,6 +41,7 @@ const initialState = {
       id: "1",
       name:
         "Smartfon Samsung Galaxy S20 128 GB Dual SIM Niebieski (SM-G980FLBD)",
+      shortName: "Samsung Galaxy S20",
       price: 1000,
       producent: "Samsung",
       producentCode: "SM-G980FLBD",
@@ -75,6 +77,7 @@ const initialState = {
     {
       id: "2",
       name: "Smartfon Samsung Galaxy A20e 32 GB Dual SIM Czarny (SM-A202FZK)",
+      shortName: "Samsung Galaxy A20e",
       price: 200,
       producent: "Samsung",
       producentCode: "SM-A202FZK",
@@ -110,6 +113,7 @@ const initialState = {
     {
       id: "3",
       name: "Smartfon Huawei P40 Lite 128 GB Dual SIM Czarny (51095CJV)",
+      shortName: "Huawei P40",
       price: 350,
       producent: "Huawei",
       producentCode: "51095CJV",
@@ -145,6 +149,7 @@ const initialState = {
     {
       id: "4",
       name: "Smartfon Apple iPhone 7 32 GB Czarny (MN8X2PM/A)",
+      shortName: "Apple IPhone 7",
       price: 500,
       producent: "Apple",
       producentCode: "MN8X2PM/A",
@@ -180,6 +185,7 @@ const initialState = {
     {
       id: "5",
       name: "Smartfon Huawei P40 Lite 128 GB Dual SIM Zielony (51095CJX)",
+      shortName:"Huawei P40",
       price: 450,
       producent: "Huawei",
       producentCode: "51095CJX",
@@ -233,6 +239,11 @@ export default function (state = initialState, action) {
           return product.id === payload ? product : null;
         }),
         loading: false,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
 
     default:
