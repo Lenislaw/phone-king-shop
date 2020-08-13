@@ -1,9 +1,11 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
+import M from "materialize-css/dist/js/materialize.min.js";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addToCart } from "../../actions/cart";
+import { setLoading } from "../../actions/offer";
 
-const OfferItem = ({ product, addToCart }) => {
+const OfferItem = ({ product, addToCart, setLoading }) => {
   const {
     id,
     photo,
@@ -13,39 +15,19 @@ const OfferItem = ({ product, addToCart }) => {
     screen,
     waterproof,
     name,
+    shortName,
     price,
     inStock,
   } = product;
 
-  const [amount, setAmount] = useState(inStock > 0 ? 1 : 0);
-  const [disableMinus, setDisableMinus] = useState(false);
-  const [disablePlus, setDisablePlus] = useState(false);
-
-  console.log(amount);
-
-  const minusOne = () => {
-    if (amount - 1 <= inStock) {
-      setDisablePlus(false);
-    }
-    if (amount === 1) {
-      setDisableMinus(true);
-    } else {
-      setAmount(amount - 1);
-    }
-  };
-  const addOne = () => {
-    if (amount === inStock) {
-      setDisablePlus(true);
-    } else {
-      setAmount(amount + 1);
-    }
-    setDisableMinus(false);
-  };
+  const [amount, setAmount] = useState(1);
 
   const onClick = () => {
-    addToCart(product);
+    addToCart(id, photo, name, price, inStock, amount, shortName);
   };
-
+  const onChange = (e) => {
+    setAmount(e.target.value);
+  };
   return (
     <li className="list-item">
       <div className="item" key={id}>
@@ -81,7 +63,7 @@ const OfferItem = ({ product, addToCart }) => {
         </div>
         <div className="item-details">
           <div className="description">
-            <Link to={`/details/${id}`}>
+            <Link to={`/details/${id}`} onClick={setLoading}>
               <div className="name">{name}</div>
             </Link>
             <div className="rate">
@@ -97,35 +79,31 @@ const OfferItem = ({ product, addToCart }) => {
         <div className="buttons">
           {inStock > 0 ? (
             <Fragment>
-              <button
-                className="qtn-button plus"
-                onClick={addOne}
-                disabled={disablePlus}
-              >
-                +
-              </button>
-              <input
-                className="add-to-cart-amount"
-                type="number"
-                min="1"
-                max={inStock}
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-              />
-              <button
-                className="qtn-button minus"
-                disabled={disableMinus}
-                onClick={minusOne}
-              >
-                -
-              </button>
+              <div className="numeric">
+                <input
+                  type="number"
+                  min="1"
+                  max={inStock}
+                  pattern="[0-9]"
+                  step={1}
+                  value={
+                    amount > inStock
+                      ? inStock
+                      : amount && amount < 1
+                      ? 1
+                      : amount
+                  }
+                  onChange={(e) => onChange(e)}
+                />
+                <strong>of {inStock} available in stock!</strong>
+              </div>
               <button className="add-to-cart" onClick={onClick}>
                 Add to Cart
               </button>
             </Fragment>
           ) : (
             <div className="out-of-stock">
-              Sorry, product not aviable in stock
+              <strong> Sorry, product not aviable in stock</strong>
             </div>
           )}
         </div>
@@ -136,5 +114,12 @@ const OfferItem = ({ product, addToCart }) => {
     </li>
   );
 };
+const mapStateToProps = (state) => ({
+  toast: state.toast,
+  cart: state.cart.cart,
+});
 
-export default connect(null, { addToCart })(OfferItem);
+export default connect(mapStateToProps, {
+  addToCart,
+  setLoading,
+})(OfferItem);
