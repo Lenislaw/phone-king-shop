@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Offer from "./components/layout/Offer";
@@ -10,7 +10,8 @@ import Wishlist from "./components/layout/Wishlist";
 import Cart from "./components/layout/Cart";
 import Details from "./components/layout/Details";
 import Footer from "./components/layout/Footer";
-
+import M from "materialize-css/dist/js/materialize.min.js";
+// import "materialize-css/dist/css/materialize.min.css";
 import "./App.css";
 
 //Redux
@@ -18,6 +19,10 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 function App() {
+  useEffect(() => {
+    // Init Materialize JS
+    M.AutoInit();
+  });
   return (
     <Provider store={store}>
       <div className="App">

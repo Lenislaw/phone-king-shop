@@ -6,3 +6,7 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const UPDATE_CART = "UPDATE_CART";
 export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
+export const SET_LOADING = "SET_LOADING";
+export const SHOW_TOAST = "SHOW_TOAST";
+export const CLEAR_TOAST = "CLEAR_TOAST";
+export const CLEAR_CARD_TOAST = "CLEAR_CARD_TOAST";

@@ -1,6 +1,14 @@
-import { ADD_TO_CART } from "../actions/types";
+import {
+  ADD_TO_CART,
+  ADD_TO_CART_TOAST,
+  CLEAR_CARD_TOAST,
+} from "../actions/types";
 const initialState = {
   cart: [],
+  cartToast: {
+    html: null,
+    displayLength: null,
+  },
 };
 
 export default function (state = initialState, action) {
@@ -8,19 +16,48 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case ADD_TO_CART:
-      const item = payload;
-      const product = state.cart.find((x) => x.id === item.id);
+      const product = state.cart.find((x) => x.id === payload.id);
 
       if (product) {
-        // product.amount = payload.amount;
+        product.amount += payload.amount;
+        if (product.amount >= payload.inStock) {
+          product.amount = payload.inStock;
+          product.pickedAll = true;
+          return {
+            ...state,
+            cart: [...state.cart],
+            cartToast: {
+              html: `You picked all (${product.amount}) ${product.shortName} from Stock!`,
+              displayLength: 4000,
+            },
+          };
+        }
         return {
+          ...state,
           cart: [...state.cart],
+          cartToast: {
+            html: `(${payload.amount})${product.shortName} added to cart!`,
+            displayLength: 4000,
+          },
         };
       }
       return {
-        cart: [...state.cart, item],
+        ...state,
+        cart: [...state.cart, payload],
+        cartToast: {
+          html: `(${payload.amount})${payload.shortName} added to cart!`,
+          displayLength: 4000,
+        },
       };
 
+    case CLEAR_CARD_TOAST:
+      return {
+        ...state,
+        cartToast: {
+          html: null,
+          displayLength: null,
+        },
+      };
     default:
       return state;
   }
