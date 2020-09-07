@@ -37,7 +37,7 @@ const Dashboard = ({ user, loading, logout, loadUser, deleteAccount }) => {
                   <div className="image">
                     <img
                       className="image-photo"
-                      src={`http://localhost:5000/uploads/photo_${p.id}.png`}
+                      src={`https://shielded-chamber-80408.herokuapp.com/uploads/photo_${p.id}.png`}
                       alt="phone"
                     />
                   </div>

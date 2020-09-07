@@ -26,7 +26,7 @@ const CartItem = ({ item, updateAmount, deleteItem }) => {
       <div className="cart-product-image">
         <img
           className="item-photo-img"
-          src={`http://localhost:5000/uploads/photo_${id}.png`}
+          src={`https://shielded-chamber-80408.herokuapp.com/uploads/photo_${id}.png`}
           alt="phone"
         />
       </div>

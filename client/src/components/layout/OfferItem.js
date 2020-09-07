@@ -29,7 +29,7 @@ const OfferItem = ({ product, userId, setLoading }) => {
           <div className="item-photo">
             <img
               className="item-photo-img"
-              src={`http://localhost:5000/uploads/photo_${_id}.png`}
+              src={`https://shielded-chamber-80408.herokuapp.com/uploads/photo_${_id}.png`}
               alt="phone"
             />
           </div>
@@ -48,7 +48,6 @@ const OfferItem = ({ product, userId, setLoading }) => {
                 <li className="parameter">
                   Screen size: <span className="bold">{screen}</span>
                 </li>
-              
               </ul>
             </div>
           </div>

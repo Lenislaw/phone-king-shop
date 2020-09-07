@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://phoneshop1234:phoneshop1234@cluster0.0izlc.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "maxFileUpload": 1000000,
+  "public": "./public/uploads"
+}
