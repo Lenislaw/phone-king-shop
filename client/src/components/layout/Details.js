@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getDetails } from "../../actions/offer";
+import Spinner from "./Spinner";
 
 const Detail = ({ getDetails, match, details, loading }) => {
   const idMatch = match.params.id;
@@ -10,14 +11,14 @@ const Detail = ({ getDetails, match, details, loading }) => {
   }, []);
 
   return loading ? (
-    <div>Loading</div>
+    <Spinner />
   ) : (
     <div className="product">
       <div className="product-product">
         <div className="image">
           <img
             className="item-photo-img"
-            src={`/imgs/${details.photo[0]}`}
+            src={`http://localhost:5000/uploads/photo_${details._id}.png`}
             alt="phone"
           />
         </div>

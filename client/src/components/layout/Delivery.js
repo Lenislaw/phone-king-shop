@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DeliveryIcon from "../../imgs/delivery-icon.png";
 import TruckIcon from "../../imgs/truck-icon.png";
 import CartIcon from "../../imgs/cart-icon.png";
@@ -6,8 +6,14 @@ import WebsiteIcon from "../../imgs/website-icon.png";
 import PhoneIcon from "../../imgs/phone-icon.png";
 import PersonIcon from "../../imgs/person-icon.png";
 import PromoIcon from "../../imgs/promo-icon.png";
+import BackToOffer from "./BackToOffer";
+import { clearFilter } from "../../actions/cart";
+import { connect } from "react-redux";
 
-const Delivery = () => {
+const Delivery = ({ clearFilter }) => {
+  useEffect(() => {
+    clearFilter();
+  });
   return (
     <div className="container">
       <div className="container-box">
@@ -16,7 +22,7 @@ const Delivery = () => {
         <div className="container-box-methods">
           <div className="method">
             <img src={TruckIcon} alt="Truck" />
-            <h3 className="p1">Kurier</h3>
+            <h3 className="p1">Courier</h3>
             <p className="p1">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
               assumenda voluptatem repellendus autem praesentium modi?
@@ -67,16 +73,12 @@ const Delivery = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
               assumenda voluptatem repellendus autem praesentium modi?
             </p>
-            <a href="index.html">
-              <button className="offer-button">
-                King's Offer <i className="fas fa-crown"></i>
-              </button>
-            </a>
           </div>
         </div>
       </div>
+      <BackToOffer />
     </div>
   );
 };
 
-export default Delivery;
+export default connect(null, { clearFilter })(Delivery);

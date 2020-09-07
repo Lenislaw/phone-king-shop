@@ -1,63 +1,66 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { updateAmount, deleteItem } from "../../actions/cart";
+import M from "materialize-css/dist/js/materialize.min.js";
 
-import NumericInput from "react-numeric-input";
+const CartItem = ({ item, updateAmount, deleteItem }) => {
+  const { id, inStock, shortName, price } = item;
 
-const CartItem = ({ item }) => {
-  useEffect(() => {
-    updateBasket();
-  }, [item]);
   const [amount, setAmount] = useState(item.amount);
-  const onClick = (e) => {
-    console.log("e", e);
+
+  const onChange = (e) => {
+    const amount = e.target.value;
+    setAmount(e.target.value);
+    updateAmount(id, amount, shortName);
   };
-  const updateBasket = (item) => {
-    console.log("zmiana", item);
+  const onClick = () => {
+    M.toast({
+      html: `${shortName}(${amount}) removed from cart!`,
+      displayLength: 4000,
+    });
+    deleteItem(id, amount, shortName);
   };
+
   return (
-    <div className="cart-product" key={item.id}>
+    <li className="cart-product" key={id}>
       <div className="cart-product-image">
         <img
           className="item-photo-img"
-          src={`/imgs/${item.photo[0]}`}
+          src={`http://localhost:5000/uploads/photo_${id}.png`}
           alt="phone"
         />
       </div>
       <div className="cart-product-pannel">
         <div className="name">
-          <h3>{item.shortName}</h3>
+          <h3>{shortName}</h3>
         </div>
         <div className="buttons">
           <div className="numeric">
-            <NumericInput
-              className="numberic-input"
-              mobile
-              value={amount}
-              min={1}
-              max={item.inStock}
+            <input
+              className="numeric-input"
+              type="number"
+              min="1"
+              max={inStock}
+              pattern="[0-9]"
               step={1}
-              onChange={(e) => onClick(e)}
-              strict={true}
-              style={{
-                wrap: {
-                  width: "200px",
-                  border: "1px solid #fff",
-                },
-                input: {
-                  width: "100%",
-                  padding: "1rem",
-                },
-                "input:focus": {
-                  border: "3px solid #19888d",
-                  outline: "none",
-                },
-              }}
-            />{" "}
+              value={
+                amount > inStock ? inStock : amount && amount < 1 ? 1 : amount
+              }
+              onChange={(e) => onChange(e)}
+            />
             <strong>of {item.inStock} available in stock!</strong>
+          </div>
+          <div className="price">{price}$</div>
+          <div className="delete-item">
+            <button className="delete-item-btn" onClick={onClick}>
+              <i className="fas fa-ban"></i>
+              <p>Remove</p>
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 
-export default CartItem;
+export default connect(null, { updateAmount, deleteItem })(CartItem);

@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+import { setOffer } from "../../actions/offer";
 import Logo from "../../imgs/phone-king.jpg";
 
-const Navbar = ({ cart }) => {
+const Navbar = ({ cart, setOffer }) => {
+  const onClick = () => {
+    setOffer();
+  };
   return (
     <nav>
       <div className="navbar">
@@ -19,20 +22,17 @@ const Navbar = ({ cart }) => {
             </div>
           </Link>
 
-          <div className="inputs">
-            <input
-              type="text"
-              placeholder="szukaj np. nokia"
-              className="search-text-input"
-            />
-            <button className="search-text-button main-color-bg">
-              <i className="fas fa-search"></i>
-            </button>
-          </div>
+          
         </div>
         <div className="navbar-right-menu">
           <div className="menu">
             <ul className="menu-list">
+              <li className="menu-list-item">
+                <Link to="/">
+                  <i className="fas fa-mobile-alt" onClick={onClick}></i>
+                  <p className="menu-list-item-name">Phone's</p>
+                </Link>
+              </li>
               <li className="menu-list-item">
                 <Link to="/delivery">
                   <i className="fas fa-truck"></i>
@@ -54,12 +54,6 @@ const Navbar = ({ cart }) => {
                 </Link>
               </li>
 
-              <li className="menu-list-item">
-                <Link to="/wishlist">
-                  <i className="fas fa-heart"></i>
-                  <p className="menu-list-item-name">Lista życzeń</p>
-                </Link>
-              </li>
               <li className="menu-list-item ">
                 <Link to="/cart">
                   <i className="fas fa-shopping-cart"></i>
@@ -84,4 +78,4 @@ const mapStateToProps = (state) => ({
   cart: state.cart.cart,
 });
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, { setOffer })(Navbar);

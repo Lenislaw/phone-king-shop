@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import BackToOffer from "./BackToOffer";
+import { connect } from "react-redux";
+import { clearFilter } from "../../actions/cart";
 
-const Contact = () => {
+const Contact = ({ clearFilter }) => {
+  useEffect(() => {
+    clearFilter();
+  });
   return (
     <div className="container">
       <div className="container">
@@ -23,8 +29,9 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <BackToOffer />
     </div>
   );
 };
 
-export default Contact;
+export default connect(null, { clearFilter })(Contact);

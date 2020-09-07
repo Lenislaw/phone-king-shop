@@ -1,7 +1,6 @@
 import React from "react";
 
 const Footer = () => {
-    
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
 
@@ -38,7 +37,7 @@ const Footer = () => {
         </li>
       </ul>
       <div className="contact">
-        <p className="contact-question">Masz pytania?</p>
+        <p className="contact-question">Any question?</p>
         <div className="phone">
           <i className="fas fa-phone-volume fa-2x"></i> +11 111 111 111
         </div>
