@@ -9,6 +9,7 @@ const Detail = ({ getDetails, match, details, loading }) => {
   useEffect(() => {
     getDetails(idMatch);
   }, []);
+  details !== null && console.log(details._id);
 
   return loading ? (
     <Spinner />
@@ -18,7 +19,7 @@ const Detail = ({ getDetails, match, details, loading }) => {
         <div className="image">
           <img
             className="item-photo-img"
-            src={`https://shielded-chamber-80408.herokuapp.com/uploads/photo_${details._id}.png`}
+            src={`../imgs/${details._id}.png`}
             alt="phone"
           />
         </div>

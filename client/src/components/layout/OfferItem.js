@@ -29,7 +29,7 @@ const OfferItem = ({ product, userId, setLoading }) => {
           <div className="item-photo">
             <img
               className="item-photo-img"
-              src={`https://shielded-chamber-80408.herokuapp.com/uploads/photo_${_id}.png`}
+              src={`./imgs/${_id}.png`}
               alt="phone"
             />
           </div>
