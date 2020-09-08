@@ -2,6 +2,5 @@
   "mongoURI": "mongodb+srv://phoneshop1234:phoneshop1234@cluster0.0izlc.mongodb.net/<dbname>?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken",
   "maxFileUpload": 1000000,
-  "public": "./public/uploads",
-  "paypalId": "ARTstzLHqy-8brkQZggqNoD_0KXI9Pvy53xLcp5wmXSfh7jqKxYc9mgP6HSLTSFsKm5hbc-cZ61mNGGW"
+  "public": "./public/uploads"
 }
