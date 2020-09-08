@@ -4,16 +4,16 @@ const Rate = ({ msg, rate }) => {
   let result;
   if (rate.length > 0) {
     if (rate.length === 1) {
-     
       result = rate[0].rate;
     }
     if (rate.length > 1) {
-      result = rate.reduce((prev, curr) => {
-        return prev.rate + curr.rate;
-      });
+      let ratesTotal = 0;
+      rate.forEach((r) => (ratesTotal += r.rate));
+      result = ratesTotal;
     }
   }
-  const avgRate = result / rate.length;
+
+  const avgRate = Math.round((result / rate.length) * 100) / 100;
 
   const [display, setDisplay] = useState("none");
   const onMouseEnter = () => {
