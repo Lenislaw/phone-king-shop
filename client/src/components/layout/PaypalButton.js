@@ -2,6 +2,7 @@ import React from "react";
 import PaypalExpressBtn from "react-paypal-express-checkout";
 import { connect } from "react-redux";
 import { setPurchaseHistory } from "../../actions/cart";
+import config from "../../../../config/production.json";
 
 const PaypalButton = ({
   total,
@@ -46,9 +47,9 @@ const PaypalButton = ({
     let currency = "USD"; // or you can set this value from your props or state
     let totalToPay = total; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
-
+    const clientId = config.get("paypalId");
     const client = {
-      sandbox: process.env.REACT_APP_PAYPAL_SANDBOX_ID,
+      sandbox: clientId,
       production: "YOUR-PRODUCTION-APP-ID",
     };
     // In order to get production's app-ID, you will have to send your app to Paypal for approval first
