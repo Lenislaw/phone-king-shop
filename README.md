@@ -2,10 +2,10 @@
 Application created as portfolio project. I want to show my small concept of phone shop.
 
 ## Tables of contents
--Technologies
--Getting started
--Project status
--Inspiration
+- Technologies
+- Getting started
+- Project status
+- Inspiration
 
 ### Technologies
 - HTML5
@@ -31,13 +31,13 @@ Run app in development mode
 
 $ cd client $ npm run start
 
-Futures
+### Futures
 
 - add admin pannel for adding/removing products from shop.
 - add better payment system and more payment options. (when i will knoe how to build it)
 
-Project status
+### Project status
 In progress...
 
-Inspiration
+### Inspiration
 I wanted to build a fullstack app wich can be usefull.
