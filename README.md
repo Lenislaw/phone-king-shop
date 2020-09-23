@@ -29,7 +29,7 @@ $ npm install
 
 Run app in development mode
 
-$ cd client $ npm run start
+$ npm run dev
 
 ### Futures
 
